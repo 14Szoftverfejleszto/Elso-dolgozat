@@ -27,6 +27,39 @@ function feltolt() {
     let nev = document.getElementById('nev').value;
     let osztaly = document.getElementById('osztaly').value;
     console.log(nev + ' ' + osztaly);
-    students.push({ 'osztály' : `${osztaly}`, 'név' : `${nev}` });
+    
+    let nevTomb = [];
+
+    students.forEach((student) => {
+        nevTomb.push(student.név);
+    });
+
+    if (nevTomb.includes(nev)) {
+        window.alert('Ez a név már szerepel a listában.');
+    }
+    else {
+        students.push({ 'osztály' : `${osztaly}`, 'név' : `${nev}` });
+    }
+
+    /* let eldont = false;
+    students.forEach((student) => {
+        students.includes
+        if (student.név == nev) {
+            eldont = true;
+            return;   
+        }
+    });
+    if (eldont) {
+        window.alert('Ez a név már szerepel a listában.');
+    }
+    else {
+        students.push({ 'osztály' : `${osztaly}`, 'név' : `${nev}` });
+    } */
+
+    osztalyListazas();
+}
+
+function utolsoTorol() {
+    students.pop();
     osztalyListazas();
 }
